@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ChangePSWActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/label_newPSW"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="?attr/actionMenuTextColor"
+        android:textSize="20sp"
+        tools:ignore="RtlHardcoded"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/chang_edt_psw"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/chang_edt_psw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:labelFor="@+id/chang_edt_psw"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/chang_edt_name"
+        android:layout_marginTop="44dp"
+        app:layout_constraintTop_toBottomOf="@+id/chang_edt_name"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/chang_edt_name" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="@string/label_confirm_psw"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="20sp"
+        android:layout_marginStart="16dp"
+        tools:ignore="RtlHardcoded"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/chang_edt_psw_ok"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/chang_edt_psw_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:labelFor="@+id/chang_edt_psw_ok"
+        tools:ignore="RtlHardcoded"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/chang_edt_psw"
+        android:layout_marginTop="44dp"
+        app:layout_constraintTop_toBottomOf="@+id/chang_edt_psw"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/chang_edt_psw" />
+
+    <Button
+        android:id="@+id/chang_btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light"
+        android:text="@string/btn_name_confirm"
+        android:layout_marginEnd="35dp"
+        app:layout_constraintRight_toLeftOf="@+id/chang_btn_cancel"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginTop="58dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/chang_btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:background="@android:color/holo_green_light"
+        android:text="@string/btn_name_cancel"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="82dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/chang_btn_ok"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/chang_edt_psw_ok" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="192dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_username"
+        android:textColor="?attr/actionMenuTextColor"
+        android:textSize="20sp"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="96dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/chang_edt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        android:layout_marginEnd="35dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+</android.support.constraint.ConstraintLayout>

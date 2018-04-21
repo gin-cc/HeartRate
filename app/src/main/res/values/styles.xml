@@ -9,6 +9,9 @@
     </style>
 
     <style name="AppTheme.NoActionBar">
+        <!--添加-->
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <!--分割-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

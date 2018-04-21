@@ -10,10 +10,14 @@
     <string name="label_confirm_psw">确认密码：</string>
     <string name="label_forgetPSW">忘记密码？</string>
     <string name="label_signIn">还没有账号？点击注册</string>
-    <string name="btn_name_login">登录</string>
-    <string name="btn_name_confirm">确认</string>
-    <string name="btn_name_cancel">取消</string>
+    <string name="btn_name_login">登 录</string>
+    <string name="btn_name_confirm">确 认</string>
+    <string name="btn_name_cancel">取 消</string>
     <string name="label_show_userWord">才能爱生活</string>
     <string name="label_show_username">爱自己</string>
     <string name="label_newPSW">新 密 码：</string>
+    <string name="label_startTest">开始检测</string>
+    <string name="label_connectionSucc">设备连接成功，开始检测.....</string>
+    <string name="label_connectionFail">设备连接失败，请检查蓝牙连接</string>
+    <string name="imageConentDiscreble">心率检测动画图</string>
 </resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/image_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:contentDescription="@string/imageConentDiscreble"
+        android:src="@mipmap/heart"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start_test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_heart_test" />
+
+
+    <Button
+        android:id="@+id/btn_start_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="66dp"
+        android:text="@string/label_startTest"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_heart" />
+
+    <TextView
+        android:id="@+id/tv_heart_test"
+        android:layout_width="214dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="110dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="检测顶部显示问题"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/image_heart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

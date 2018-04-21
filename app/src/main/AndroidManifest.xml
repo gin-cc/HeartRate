@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.android.tweedle.heartrate">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 是否必须支持低功耗蓝牙，此处不必须 -->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false" />
+    <!-- 申请定位权限 -->
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
-        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,6 +31,27 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="用户登录" />
+        <activity
+            android:name=".activity.ChangePSWActivity"
+            android:label="修改密码" />
+        <activity
+            android:name=".activity.SignInActivity"
+            android:label="用户注册"></activity>
+        <activity
+            android:name=".activity.DeviceListActivity"
+            android:label="选择一个设备进行连接">
+
+        </activity>
+        <activity
+            android:name=".activity.TestActivity">
+
+        </activity>
+        <activity
+            android:name ="org.achartengine.GraphicalActivity">
         </activity>
     </application>
 

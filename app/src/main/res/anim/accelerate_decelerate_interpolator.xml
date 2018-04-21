@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+    <scale
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:fromXScale="0.5"
+        android:toXScale="1.0"
+        android:fromYScale="0.5"
+        android:toYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="80%"
+        android:duration="2000"
+        android:repeatCount="-1"
+        android:repeatMode="reverse" />
+
+</set>
+
+    <!--
+        Interpolator 插值器 android:shareInterpolator="true"表示集合里所有的动画共享一个插值器
+        duration 动画持续时间
+        android:fromXScale-水平方向缩放的起始值
+        android:toXScale-水平方向缩放结束值
+        android:fromYScale-竖直方向缩放的起始值
+        android:toYScale-竖直方向缩放结束值
+        android:pivotX 缩放轴点的x坐标
+        android:pivotY缩放轴点的y坐标
+        android:repeatMode  动画重复的Mode
+     -->
