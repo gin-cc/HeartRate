@@ -4,46 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
 
 
     <ImageView
         android:id="@+id/image_heart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="75dp"
+        android:layout_marginTop="133dp"
         android:contentDescription="@string/imageConentDiscreble"
-        android:src="@mipmap/heart"
-        app:layout_constraintBottom_toTopOf="@+id/btn_start_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_heart_test" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/heart" />
 
 
     <Button
         android:id="@+id/btn_start_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="66dp"
+        android:layout_marginBottom="46dp"
+        android:layout_marginStart="78dp"
         android:text="@string/label_startTest"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_heart_test"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="77dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="74dp"
+        android:text="设备连接失败，请检查蓝牙连接"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_heart" />
 
-    <TextView
-        android:id="@+id/tv_heart_test"
-        android:layout_width="214dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="110dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="检测顶部显示问题"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/image_heart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btn_cancel_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="78dp"
+        android:text="取消动画"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_start_test"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
