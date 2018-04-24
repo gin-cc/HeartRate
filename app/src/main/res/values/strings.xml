@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Heart Rate</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -20,4 +20,6 @@
     <string name="label_connectionSucc">设备连接成功，开始检测.....</string>
     <string name="label_connectionFail">设备连接失败，请检查蓝牙连接</string>
     <string name="imageConentDiscreble">心率检测动画图</string>
+
+    <string name="title_connected_to">连接到 <xliff:g id="device_name">%1$s</xliff:g></string>
 </resources>

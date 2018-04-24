@@ -19,27 +19,29 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
 
     private ArrayList<String> gData;
 //    private ArrayList<ArrayList<BleDevice>> iData;
-    private ArrayList<ArrayList<BluetoothDevice>> mLeDevices;
-    private ArrayList<BluetoothDevice> devices;
+    private ArrayList<ArrayList<String>> itemData;
+//    private ArrayList<ArrayList<BluetoothDevice>> mLeDevices;
+//    private ArrayList<BluetoothDevice> devices;
     private Context mContext;
 
-    public MyBaseExpandableListAdapter(ArrayList<String> gData,ArrayList<ArrayList<BluetoothDevice>> iData, Context mContext) {
+    public MyBaseExpandableListAdapter(ArrayList<String> gData,ArrayList<ArrayList<String>> iData, Context mContext) {
         this.gData = gData;
-        this.mLeDevices = iData;
+        this.itemData = iData;
+//        this.mLeDevices = iData;
         this.mContext = mContext;
-        this.devices = new ArrayList<BluetoothDevice>();
+//        this.devices = new ArrayList<BluetoothDevice>();
     }
 
     //先添加到一组list里面，再整个添加到特定的小组标签下面
-    public void addDevice(BluetoothDevice device) {
-        if(!mLeDevices.contains(device)) {
-            devices.add(device);
-            mLeDevices.add(devices);
-        }
-    }
-    public void clear() {
-        mLeDevices.clear();
-    }
+//    public void addDevice(BluetoothDevice device) {
+//        if(!mLeDevices.contains(device)) {
+//            devices.add(device);
+//            mLeDevices.add(devices);
+//        }
+//    }
+//    public void clear() {
+//        mLeDevices.clear();
+//    }
 
 
 
@@ -67,7 +69,7 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public int getChildrenCount(int groupPosition) {
  //报错 IndexOutOfBoundsException  Invalid index 1, size is 1
-        return mLeDevices.get(groupPosition).size();
+        return itemData.get(groupPosition).size();
     }
 
     /**
@@ -95,8 +97,8 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
      * @see android.widget.ExpandableListAdapter#getChild(int, int)
      */
     @Override
-    public BluetoothDevice getChild(int groupPosition, int childPosition) {
-        return mLeDevices.get(groupPosition).get(childPosition);
+    public String getChild(int groupPosition, int childPosition) {
+        return itemData.get(groupPosition).get(childPosition);
     }
 
     /**
@@ -166,7 +168,7 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
             groupHolder = (ViewHolderGroup) convertView.getTag();
         }
         //设置组名
-        groupHolder.tv_group_name.setText(gData.get(groupPosition));
+        groupHolder.tv_group_name.setText(gData.get(groupPosition).toString());
         return convertView;
     }
 
@@ -198,7 +200,7 @@ public class MyBaseExpandableListAdapter extends BaseExpandableListAdapter {
             itemHolder = (ViewHolderItem) convertView.getTag();
         }
         //获取蓝牙广播名
-        itemHolder.tv_name.setText(mLeDevices.get(groupPosition).get(childPosition).getName());
+        itemHolder.tv_name.setText(itemData.get(groupPosition).get(childPosition).toString());
         return convertView;
     }
 
