@@ -111,13 +111,13 @@ public class BluetoothService {
             }
         }
 
-        // Cancel any thread currently running a connection 取消当前运行连接的任何线程
+        //  取消当前运行连接的任何线程
         if (mConnectedThread != null) {
             mConnectedThread.cancel();
             mConnectedThread = null;
         }
 
-        // Start the thread to connect with the given device 启动线程与给定设备连接
+        // 启动线程与给定设备连接
         mConnectThread = new ConnectThread(device, secure);
         mConnectThread.start();
         // Update UI title
@@ -208,12 +208,12 @@ public class BluetoothService {
     public void write(byte[] out) {
         // Create temporary object 创建临时对象
         ConnectedThread r;
-        // Synchronize a copy of the ConnectedThread 同步连接线程的副本
+        // 同步连接线程的副本
         synchronized (this) {
             if (mState != STATE_CONNECTED) return;
             r = mConnectedThread;
         }
-        // Perform the write unsynchronized 执行写不同步
+        //  执行写不同步
         r.write(out);
     }
 
@@ -276,7 +276,7 @@ public class BluetoothService {
             BluetoothServerSocket tmp = null;
             mSocketType = secure ? "Secure" : "Insecure";
 
-            // Create a new listening server socket
+            // 创建一个新的侦听服务器套接字
             try {
                 if (secure) {
                     tmp = mAdapter.listenUsingRfcommWithServiceRecord(NAME_SECURE, MY_UUID_SECURE);
@@ -297,30 +297,29 @@ public class BluetoothService {
 
             BluetoothSocket socket = null;
 
-            // Listen to the server socket if we're not connected
+            //如果没有连接，请监听服务器套接字
             while (mState != STATE_CONNECTED) {
                 try {
-                    // This is a blocking call and will only return on a
-                    // successful connection or an exception
+                    // 这是一个阻塞调用，只返回一个成功连接或异常
                     socket = mmServerSocket.accept();
                 } catch (IOException e) {
                     Log.e(TAG, "Socket Type: " + mSocketType + "accept() failed", e);
                     break;
                 }
 
-                // If a connection was accepted
+                    // 如果连接被接受
                 if (socket != null) {
                     synchronized (BluetoothService.this) {
                         switch (mState) {
                             case STATE_LISTEN:
                             case STATE_CONNECTING:
-                                // Situation normal. Start the connected thread.
+                                // 情况正常。启动连接线程。
                                 connected(socket, socket.getRemoteDevice(),
                                         mSocketType);
                                 break;
                             case STATE_NONE:
                             case STATE_CONNECTED:
-                                // Either not ready or already connected. Terminate new socket.
+                                // 要么没有准备好，要么已经连接好了。终止新套接字。
                                 try {
                                     socket.close();
                                 } catch (IOException e) {
@@ -365,8 +364,7 @@ public class BluetoothService {
             BluetoothSocket tmp = null;
             mSocketType = secure ? "Secure" : "Insecure";
 
-            // Get a BluetoothSocket for a connection with the
-            // given BluetoothDevice
+            // 获取与此连接的蓝牙套接字 给定蓝牙设备
             try {
                 if (secure) {
                     tmp = device.createRfcommSocketToServiceRecord(MY_UUID_SECURE);
@@ -384,16 +382,15 @@ public class BluetoothService {
             Log.i(TAG, "BEGIN mConnectThread SocketType:" + mSocketType);
             setName("ConnectThread" + mSocketType);
 
-            // Always cancel discovery because it will slow down a connection
+            // 总是取消发现，因为它会减慢连接。
             mAdapter.cancelDiscovery();
 
-            // Make a connection to the BluetoothSocket
+            // 连接到蓝牙插座
             try {
-                // This is a blocking call and will only return on a
-                // successful connection or an exception
+                // 这是一个阻塞调用，只返回一个成功连接或异常
                 mmSocket.connect();
             } catch (IOException e) {
-                // Close the socket
+                // 关闭套接字
                 try {
                     mmSocket.close();
                 } catch (IOException e2) {
@@ -404,7 +401,7 @@ public class BluetoothService {
                 return;
             }
 
-            // Reset the ConnectThread because we're done
+            // 重置连接线程，因为我们完成了
             synchronized (BluetoothService.this) {
                 mConnectThread = null;
             }
@@ -485,7 +482,6 @@ public class BluetoothService {
             try {
                 mmOutStream.write(buffer);
 
-                // Share the sent message back to the UI Activity
                 // 将发送的消息共享回UI活动
                 mHandler.obtainMessage(Constants.MESSAGE_WRITE, -1, -1, buffer).sendToTarget();
             } catch (IOException e) {

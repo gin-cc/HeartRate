@@ -43,6 +43,7 @@ public class DeviceListActivity extends AppCompatActivity {
 
     private static final String TAG = "DeviceListActivity";
     public static String EXTRA_DEVICE_ADDRESS = "device_address";
+    public static String EXTRAS_DEVICE_NAME = "device_name";
 
     private ArrayList<String> gData = null;
     private ArrayList<ArrayList<String>> itemData = null;
@@ -179,18 +180,21 @@ public class DeviceListActivity extends AppCompatActivity {
                 mBluetoothAdapter.cancelDiscovery();
                 Log.d(TAG, "点击了列表中的设备！");
                 //获取设备MAC地址，即是视图中的最后17个字符
-                String info = ((TextView) v).getText().toString();
-                String address = info.substring(info.length() - 17);
+
+                String info = itemData.get(groupPosition).get(childPosition).toString();
+                String[] res = info.split("\n");
+                Log.d(TAG, "deviceName: "+res[0]);
+                Log.d(TAG, "deviceAddress: "+res[1]);
                 try {
                     if(device == null){
                         //获得远程设备
-                        device = mBluetoothAdapter.getRemoteDevice(address);
+                        device = mBluetoothAdapter.getRemoteDevice(res[1]);
                     }
                     if(clientSocket == null){
                         clientSocket = device.createRfcommSocketToServiceRecord(le_uuid);
                         clientSocket.connect();
                         os = clientSocket.getOutputStream();
-                        Toast.makeText(v.getContext(),"连接上了"+"info",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(),"连接上了"+res[0],Toast.LENGTH_SHORT).show();
                     }
 //                    if(os!= null){
 //                        os.write("蓝牙信息来了",getBytes("utf-8"));
@@ -202,10 +206,11 @@ public class DeviceListActivity extends AppCompatActivity {
 
                 //创建结果Intent并包含MAC地址
                 Intent intent = new Intent();
-                intent.putExtra(EXTRA_DEVICE_ADDRESS, address);
-
+                intent.putExtra(EXTRAS_DEVICE_NAME,res[0]);
+                intent.putExtra(EXTRA_DEVICE_ADDRESS, res[1]);
+                startActivity(intent);
                 //设置结果并完成此活动
-                setResult(Activity.RESULT_OK, intent);
+//                setResult(Activity.RESULT_OK, intent);
                 finish();
                 return true;
             }
