@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.android.tweedle.heartrate.R;
 import com.android.tweedle.heartrate.adapter.MyBaseExpandableListAdapter;
 import com.android.tweedle.heartrate.ble.BluetoothFragment;
+import com.android.tweedle.heartrate.ble.DeviceControlActivity;
 
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -64,11 +65,14 @@ public class DeviceListActivity extends AppCompatActivity {
     private ScanCallback mLeScanCallback  ;
     private ArrayList<String> newDeviceList = new ArrayList<String>();
 
-
+    //客户端
     private BluetoothSocket clientSocket;
     private OutputStream os;
     private final UUID le_uuid = UUID.fromString("49535343-fe7d-4ae5-8fa9-9fafd205e455");
     private BluetoothDevice device;
+
+    //服务端
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,22 +200,26 @@ public class DeviceListActivity extends AppCompatActivity {
                         os = clientSocket.getOutputStream();
                         Toast.makeText(v.getContext(),"连接上了"+res[0],Toast.LENGTH_SHORT).show();
                     }
-//                    if(os!= null){
-//                        os.write("蓝牙信息来了",getBytes("utf-8"));
-//                    }
+
+                    if(os!= null){
+                        //往服务端写信息
+                        os.write("蓝牙信息来了".getBytes("utf-8"));
+                    }
 
                 }catch (Exception e){
 
                 }
 
                 //创建结果Intent并包含MAC地址
-                Intent intent = new Intent();
-                intent.putExtra(EXTRAS_DEVICE_NAME,res[0]);
-                intent.putExtra(EXTRA_DEVICE_ADDRESS, res[1]);
-                startActivity(intent);
+//                Intent intent = new Intent(DeviceListActivity.this, DeviceControlActivity.class);
+//                intent.putExtra(EXTRAS_DEVICE_NAME,res[0]);
+//                intent.putExtra(EXTRA_DEVICE_ADDRESS, res[1]);
+//                startActivity(intent);
+                //跳转过去的activity注册一下再试试，不然就查一下class之间如何传数据，其实就可以按照
+                //https://mp.weixin.qq.com/s/Y1sSBtqkWlZdBV9IQAC6Ig这个就可以实现蓝牙通信就行
                 //设置结果并完成此活动
 //                setResult(Activity.RESULT_OK, intent);
-                finish();
+//                finish();
                 return true;
             }
 

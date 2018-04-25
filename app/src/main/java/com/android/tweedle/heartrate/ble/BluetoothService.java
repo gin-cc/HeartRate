@@ -30,6 +30,7 @@ public class BluetoothService {
 
     private static final UUID MY_UUID_SECURE = UUID.fromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
     private static final UUID MY_UUID_INSECURE = UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66");
+    private final UUID le_uuid = UUID.fromString("49535343-fe7d-4ae5-8fa9-9fafd205e455");
 
     private ConnectThread mConnectThread;
     private ConnectedThread mConnectedThread;

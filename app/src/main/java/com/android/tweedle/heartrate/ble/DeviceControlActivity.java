@@ -49,18 +49,18 @@ import android.widget.Toast;
 public class DeviceControlActivity extends Activity {
     private final static String TAG = DeviceControlActivity.class.getSimpleName();
 
-    public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
-    public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
+    public static final String EXTRAS_DEVICE_NAME = "device_name";
+    public static final String EXTRAS_DEVICE_ADDRESS = "device_address";
 
-    private TextView mDataField;
+//    private TextView mDataField;
     private String mDeviceName;
     private String mDeviceAddress;
     private BluetoothLeService mBluetoothLeService;
     private boolean mConnected = false;
     
-    EditText edtSend;
-	ScrollView svResult;
-	Button btnSend;
+//    EditText edtSend;
+//	ScrollView svResult;
+//	Button btnSend;
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -99,28 +99,28 @@ public class DeviceControlActivity extends Activity {
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) { //�Ͽ�����
                 mConnected = false;
                 invalidateOptionsMenu();
-                btnSend.setEnabled(false);
+//                btnSend.setEnabled(false);
 //                clearUI();
             }else if(BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) //���Կ�ʼ�ɻ���
             {
             	mConnected = true;
-            	mDataField.setText("");
-            	ShowDialog();
-            	btnSend.setEnabled(true);
+//            	mDataField.setText("");
+//            	ShowDialog();
+//            	btnSend.setEnabled(true);
             	Log.e(TAG, "In what we need");
             	invalidateOptionsMenu();
             }else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) { //�յ�����
             	Log.e(TAG, "RECV DATA");
             	String data = intent.getStringExtra(BluetoothLeService.EXTRA_DATA);
             	if (data != null) {
-                	if (mDataField.length() > 500)
-                		mDataField.setText("");
-                    mDataField.append(data); 
-                    svResult.post(new Runnable() {
-            			public void run() {
-            				svResult.fullScroll(ScrollView.FOCUS_DOWN);
-            			}
-            		});
+//                	if (mDataField.length() > 500)
+//                		mDataField.setText("");
+//                    mDataField.append(data);
+//                    svResult.post(new Runnable() {
+//            			public void run() {
+//            				svResult.fullScroll(ScrollView.FOCUS_DOWN);
+//            			}
+//            		});
                 }
             }
         }
@@ -221,32 +221,32 @@ public class DeviceControlActivity extends Activity {
 //        return super.onOptionsItemSelected(item);
 //    }
     
-    private void ShowDialog()
-    {
-    	Toast.makeText(this, "���ӳɹ������ڿ�������ͨ�ţ�", Toast.LENGTH_SHORT).show();
-    }
+//    private void ShowDialog()
+//    {
+//    	Toast.makeText(this, "���ӳɹ������ڿ�������ͨ�ţ�", Toast.LENGTH_SHORT).show();
+//    }
 
  // ��ť�¼�
-	class ClickEvent implements View.OnClickListener {
-		@Override
-		public void onClick(View v) {
-			if (v == btnSend) {
-				if(!mConnected) return;
-				
-				if (edtSend.length() < 1) {
-					Toast.makeText(DeviceControlActivity.this, "������Ҫ���͵�����", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				mBluetoothLeService.WriteValue(edtSend.getText().toString());
-				
-				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-				if(imm.isActive())
-					imm.hideSoftInputFromWindow(edtSend.getWindowToken(), 0);
-				//todo Send data
-			}
-		}
-
-	}
+//	class ClickEvent implements View.OnClickListener {
+//		@Override
+//		public void onClick(View v) {
+//			if (v == btnSend) {
+//				if(!mConnected) return;
+//
+//				if (edtSend.length() < 1) {
+//					Toast.makeText(DeviceControlActivity.this, "������Ҫ���͵�����", Toast.LENGTH_SHORT).show();
+//					return;
+//				}
+//				mBluetoothLeService.WriteValue(edtSend.getText().toString());
+//
+//				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//				if(imm.isActive())
+//					imm.hideSoftInputFromWindow(edtSend.getWindowToken(), 0);
+//				//todo Send data
+//			}
+//		}
+//
+//	}
 	
     private static IntentFilter makeGattUpdateIntentFilter() {                        //ע����յ��¼�
         final IntentFilter intentFilter = new IntentFilter();
